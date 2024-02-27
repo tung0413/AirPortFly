@@ -1,13 +1,18 @@
 package com.example.airportfly.ui.flight
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.airportfly.data.source.FlightRepository
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flow
 
-class FlightViewModel : ViewModel() {
+private const val UPDATE_TIME: Long = 3 * 1000
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is flight Fragment"
+class FlightViewModel(private val flightRepository: FlightRepository) : ViewModel() {
+    val flights = flow {
+        while (true) {
+            val latestFlight = flightRepository.getFlights("D", "RMQ")
+            emit(latestFlight)
+            delay(UPDATE_TIME)
+        }
     }
-    val text: LiveData<String> = _text
 }
