@@ -9,64 +9,6 @@
     android:paddingEnd="16dp"
     tools:context=".ui.flight.FlightFragment">
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/group_flight_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:checkedButton="@id/toggle_arrival"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:singleSelection="true">
-
-        <Button
-            android:id="@+id/toggle_arrival"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/flight_arrival"
-            app:icon="@drawable/ic_arrival" />
-
-        <Button
-            android:id="@+id/toggle_departure"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/flight_departure"
-            app:icon="@drawable/ic_departure" />
-    </com.google.android.material.button.MaterialButtonToggleGroup>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_edt_airport"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@id/btn_search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/group_flight_status">
-
-        <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/edt_airport"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:text="TPE" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/btn_search"
-        style="?attr/materialIconButtonFilledStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:icon="@drawable/ic_search"
-        app:layout_constraintBottom_toBottomOf="@id/layout_edt_airport"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/layout_edt_airport"
-        app:layout_constraintTop_toTopOf="@id/layout_edt_airport" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_flights"
         android:layout_width="match_parent"

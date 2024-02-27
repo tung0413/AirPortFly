@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">AirPortFly</string>
-    <string name="title_flight">Flight</string>
-    <string name="title_currency">Currency</string>
+    <string name="title_flight">航班</string>
+    <string name="title_currency">匯率</string>
 
-    <string name="flight_arrival">抵達班機</string>
-    <string name="flight_departure">起飛班機</string>
+    <string name="flight_arrival">入境航班</string>
+    <string name="flight_departure">出境航班</string>
     <string name="refresh">重新整理</string>
+    <string name="search">搜尋</string>
+    <string name="airport_hint">入境/出境機場</string>
 </resources>

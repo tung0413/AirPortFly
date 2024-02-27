@@ -1,13 +1,13 @@
-package com.example.airportfly.ui.flight
+package com.example.airportfly.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class FlightViewModel : ViewModel() {
+class CurrencyViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is flight Fragment"
+        value = "This is currency Fragment"
     }
     val text: LiveData<String> = _text
 }

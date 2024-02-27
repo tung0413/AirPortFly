@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.airportfly.databinding.FragmentCurrencyBinding
+import com.example.airportfly.viewmodel.CurrencyViewModel
 
 class CurrencyFragment : Fragment() {
 
