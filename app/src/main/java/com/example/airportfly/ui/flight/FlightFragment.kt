@@ -27,11 +27,6 @@ class FlightFragment : Fragment() {
 
         _binding = FragmentFlightBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textFlight
-        flightViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
