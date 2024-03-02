@@ -1,12 +1,13 @@
 package com.example.airportfly.data
 
+import com.example.airportfly.util.AirPortID
 import com.google.gson.annotations.SerializedName
 
 data class Flight(
     @SerializedName("FlyType")
     val flyType: String,    // A-入境航班 / D-出境航班
     @SerializedName("AirlineID")
-    val airlineId: String,  // 航空公司IATA國際代碼
+    val airlineId: AirPortID,  // 航空公司IATA國際代碼
     @SerializedName("Airline")
     val airline: String,    // 航空公司名稱
     @SerializedName("FlightNumber")
@@ -22,15 +23,15 @@ data class Flight(
     @SerializedName("ScheduleTime")
     val scheduleTime: String,   // 表訂出發/到達時間
     @SerializedName("ActualTime")
-    val actualTime: String?=null, // 實際出發/到達時間
+    val actualTime: String?, // 實際出發/到達時間
     @SerializedName("EstimatedTime")
-    val estimatedTime: String? = null,    // 預估出發/到達時間
+    val estimatedTime: String?,    // 預估出發/到達時間
     @SerializedName("Remark")
     val remark: String, // 航班狀態描述
     @SerializedName("Terminal")
-    val terminal: String?=null, // 航廈
+    val terminal: String?, // 航廈
     @SerializedName("Gate")
-    val gate: String?=null, // 登機門
+    val gate: String?, // 登機門
     @SerializedName("UpdateTime")
     val updateTime: String, // 資料更新時間
 )

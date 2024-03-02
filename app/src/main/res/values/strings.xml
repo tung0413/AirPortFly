@@ -2,10 +2,18 @@
     <string name="app_name">AirPortFly</string>
     <string name="title_flight">航班</string>
     <string name="title_currency">匯率</string>
+    <string name="no_value">---</string>
 
     <string name="flight_arrival">入境航班</string>
     <string name="flight_departure">出境航班</string>
     <string name="refresh">重新整理</string>
     <string name="search">搜尋</string>
     <string name="airport_hint">入境/出境機場</string>
+    <string name="air_port_name">機場名稱</string>
+
+    <string name="flight_item_air_port">%1$s\n%2$s</string>
+    <string name="flight_item_schedule_time">預計時間\n%1$s</string>
+    <string name="flight_item_actual_time">實際時間\n%1$s</string>
+    <string name="flight_item_number">航機班號: %1$s</string>
+    <string name="flight_item_terminal_and_gate">航廈/登機門: %1$s/%2$s</string>
 </resources>
