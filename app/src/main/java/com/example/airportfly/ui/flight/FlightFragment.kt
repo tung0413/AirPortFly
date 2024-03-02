@@ -6,19 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.airportfly.ViewModelFactory
 import com.example.airportfly.databinding.FragmentFlightBinding
-import kotlinx.coroutines.launch
 import com.example.airportfly.viewmodel.FlightViewModel
+import kotlinx.coroutines.launch
 
 class FlightFragment : Fragment() {
 
     private var _binding: FragmentFlightBinding? = null
 
-    private val viewModel by viewModels<FlightViewModel> { ViewModelFactory }
+    private val viewModel: FlightViewModel by activityViewModels { ViewModelFactory }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -34,7 +34,7 @@ class FlightFragment : Fragment() {
         _binding = FragmentFlightBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        Log.d("ooo", "${args.flyType}  ${args.airPortId}")
+        Log.d("[MY][TEMP]", "${args.flyType}  ${args.airPortId}")
         return root
     }
 

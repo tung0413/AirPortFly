@@ -8,4 +8,5 @@
     <string name="refresh">重新整理</string>
     <string name="search">搜尋</string>
     <string name="airport_hint">入境/出境機場</string>
+    <string name="air_port_name">機場名稱</string>
 </resources>

@@ -1,22 +1,23 @@
 package com.example.airportfly.data
 
+import com.example.airportfly.util.AirPortID
 import com.google.gson.annotations.SerializedName
 
 data class Flight(
     @SerializedName("FlyType")
     val flyType: String,    // A-入境航班 / D-出境航班
     @SerializedName("AirlineID")
-    val airlineId: String,  // 航空公司IATA國際代碼
+    val airlineId: AirPortID,  // 航空公司IATA國際代碼
     @SerializedName("Airline")
     val airline: String,    // 航空公司名稱
     @SerializedName("FlightNumber")
     val flightNumber: String,   // 航機班號
     @SerializedName("DepartureAirportID")
-    val departureAirportId: String, // 起點機場IATA國際代碼
+    val departureAirportId: AirPortID, // 起點機場IATA國際代碼
     @SerializedName("DepartureAirport")
     val departureAirport: String,   // 起點機場名稱
     @SerializedName("ArrivalAirportID")
-    val arrivalAirportId: String,   // 目的地機場IATA國際代碼
+    val arrivalAirportId: AirPortID,   // 目的地機場IATA國際代碼
     @SerializedName("ArrivalAirport")
     val arrivalAirport: String, // 目的地機場名稱
     @SerializedName("ScheduleTime")
