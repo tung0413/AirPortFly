@@ -27,6 +27,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/tv_departure_air_port"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -47,6 +48,7 @@
                 app:tint="@color/md_theme_outline_highContrast" />
 
             <TextView
+                android:id="@+id/tv_arrival_air_port"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -68,15 +70,17 @@
             app:layout_constraintTop_toBottomOf="@id/layout_edt_airport">
 
             <ImageView
+                android:id="@+id/img_fly_type"
                 android:layout_width="24sp"
                 android:layout_height="24sp"
                 android:layout_gravity="center"
                 android:layout_margin="4dp"
                 android:scaleType="centerCrop"
                 app:tint="@color/md_theme_outline_highContrast"
-                tools:src="@drawable/ic_arrival" />
+                android:src="@drawable/ic_arrival" />
 
             <TextView
+                android:id="@+id/tv_schedule_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -86,6 +90,7 @@
                 tools:text="預計時間\nHH:mm" />
 
             <TextView
+                android:id="@+id/tv_actual_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -102,14 +107,14 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/md_theme_onSurface"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@id/tv_terminal_gate"
+            app:layout_constraintBottom_toTopOf="@id/tv_terminal_and_gate"
             app:layout_constraintEnd_toEndOf="@id/guideline_w70"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_time"
             tools:text="航機班號: 786" />
 
         <TextView
-            android:id="@+id/tv_terminal_gate"
+            android:id="@+id/tv_terminal_and_gate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -122,17 +127,18 @@
             tools:text="航廈/登機門: 01/A9" />
 
         <TextView
+            android:id="@+id/tv_remark"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:breakStrategy="balanced"
+            android:breakStrategy="high_quality"
             android:textAlignment="center"
-            android:textSize="24sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_w70"
             app:layout_constraintTop_toBottomOf="@id/layout_edt_airport"
-            tools:text="時間更改" />
+            tools:text="時間更改\nSCHEDULE CANGE" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_w70"
