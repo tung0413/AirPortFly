@@ -28,11 +28,6 @@ class CurrencyFragment : Fragment() {
 
         _binding = FragmentCurrencyBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textCurrency
-        currencyViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
