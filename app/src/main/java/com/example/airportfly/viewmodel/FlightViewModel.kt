@@ -1,18 +1,49 @@
 package com.example.airportfly.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.airportfly.data.Flight
 import com.example.airportfly.data.source.FlightRepository
+import com.example.airportfly.network.response.ApiResponse
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 
-private const val UPDATE_TIME: Long = 3 * 1000
+private const val UPDATE_TIME: Long = 3 * 60 * 1000
 
 class FlightViewModel(private val flightRepository: FlightRepository) : ViewModel() {
-    val flights = flow {
-        while (true) {
-            val latestFlight = flightRepository.getFlights("A", "TPE")
-            emit(latestFlight)
-            delay(UPDATE_TIME)
+    var flightsLiveData: MutableLiveData<ApiResponse<List<Flight>>> = MutableLiveData()
+        private set
+
+    private var job: Job? = null
+
+    fun startGetFlightsJob(flyType: String, airPortID: String) {
+        flightsLiveData.value = ApiResponse.Loading
+        job = viewModelScope.launch {
+            while (true) {
+                apiGetFlights(flyType, airPortID)
+                delay(UPDATE_TIME)
+            }
+        }
+    }
+
+    fun cancelGetFlightsJob() {
+        job?.cancel()
+    }
+
+    private fun apiGetFlights(flyType: String, airPortID: String) {
+        viewModelScope.launch {
+            runCatching {
+                flightRepository.getFlights(flyType, airPortID)
+            }.onSuccess {
+                flightsLiveData.value = ApiResponse.Success(it)
+            }.onFailure {
+                it.printStackTrace()
+
+                flightsLiveData.value = ApiResponse.Error(it)
+                cancelGetFlightsJob()
+            }
         }
     }
 }

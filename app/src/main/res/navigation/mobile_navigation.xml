@@ -22,11 +22,11 @@
 
         <argument
             android:name="flyType"
-            app:argType="string" />
+            app:argType="com.example.airportfly.util.FlyType" />
 
         <argument
             android:name="airPortId"
-            app:argType="string" />
+            app:argType="com.example.airportfly.util.AirPortID" />
     </fragment>
 
     <fragment

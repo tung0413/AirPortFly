@@ -60,15 +60,13 @@ class FlightAdapter(private val context: Context) :
                 R.string.flight_item_air_port, data.arrivalAirportId, data.arrivalAirport
             )
 
-            when (data.flyType) {
-                FlyType.ARRIVAL.str -> {
-                    binding.imgFlyType.setImageResource(R.drawable.ic_arrival)
+            binding.imgFlyType.setImageResource(
+                when (data.flyType) {
+                    FlyType.ARRIVAL.str -> R.drawable.ic_arrival
+                    FlyType.DEPARTURE.str -> R.drawable.ic_departure
+                    else -> 0
                 }
-
-                FlyType.DEPARTURE.str -> {
-                    binding.imgFlyType.setImageResource(R.drawable.ic_departure)
-                }
-            }
+            )
 
             binding.tvScheduleTime.text =
                 context.getString(R.string.flight_item_schedule_time, data.scheduleTime)
@@ -97,8 +95,11 @@ class FlightAdapter(private val context: Context) :
      */
     private fun String.remarkTransToShow(): String {
         val insertPos = this.indexOfFirst { it.isAlphabet() }
-        val str = this.addCharAtIndex('\n', insertPos)
-        return str
+        return if (insertPos != -1) {
+            this.addCharAtIndex('\n', insertPos)
+        } else {
+            this
+        }
     }
 
 }

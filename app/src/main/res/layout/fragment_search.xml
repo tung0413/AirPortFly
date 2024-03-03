@@ -56,6 +56,9 @@
             android:id="@+id/edt_airport"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:inputType="text"
             tools:text="TPE" />
     </com.google.android.material.textfield.TextInputLayout>
 
