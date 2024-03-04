@@ -137,7 +137,7 @@ class CurrencyFragment : Fragment() {
 
         binding.btnRefresh.visibility =
             if (state == UiState.LIST_IS_EMPTY) View.GONE else View.VISIBLE
-        binding.progressHorizontal.visibility = View.GONE
+        binding.progressHorizontal.visibility = View.INVISIBLE
     }
 
     private enum class UiState {
