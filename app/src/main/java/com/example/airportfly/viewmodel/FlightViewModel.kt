@@ -3,14 +3,13 @@ package com.example.airportfly.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.airportfly.UPDATE_TIME
 import com.example.airportfly.data.Flight
 import com.example.airportfly.data.source.FlightRepository
 import com.example.airportfly.network.response.ApiResponse
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
-private const val UPDATE_TIME: Long = 3 * 60 * 1000
 
 class FlightViewModel(private val flightRepository: FlightRepository) : ViewModel() {
     var flightsLiveData: MutableLiveData<ApiResponse<List<Flight>>> = MutableLiveData()

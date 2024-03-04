@@ -18,8 +18,11 @@ package com.example.airportfly
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
+import com.example.airportfly.data.source.CurrenciesRepository
 import com.example.airportfly.data.source.FlightRepository
+import com.example.airportfly.network.CurrencyApi
 import com.example.airportfly.network.FlightApi
+import com.example.airportfly.viewmodel.CurrencyViewModel
 import com.example.airportfly.viewmodel.FlightViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -27,7 +30,16 @@ val ViewModelFactory = object : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T =
         with(modelClass) {
             when {
-                isAssignableFrom(FlightViewModel::class.java) -> FlightViewModel(FlightRepository(FlightApi))
+                isAssignableFrom(FlightViewModel::class.java) -> FlightViewModel(
+                    FlightRepository(
+                        FlightApi
+                    )
+                )
+
+                isAssignableFrom(CurrencyViewModel::class.java) -> CurrencyViewModel(
+                    CurrenciesRepository(CurrencyApi)
+                )
+
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }

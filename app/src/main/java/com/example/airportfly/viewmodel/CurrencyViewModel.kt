@@ -1,13 +1,49 @@
 package com.example.airportfly.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.airportfly.UPDATE_TIME
+import com.example.airportfly.data.Currencies
+import com.example.airportfly.data.source.CurrenciesRepository
+import com.example.airportfly.network.response.ApiResponse
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class CurrencyViewModel : ViewModel() {
+class CurrencyViewModel(private val currenciesRepository: CurrenciesRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is currency Fragment"
+    var ratesLiveData: MutableLiveData<ApiResponse<Currencies>> = MutableLiveData()
+        private set
+
+    private var job: Job? = null
+
+    fun startGetRatesJob() {
+        ratesLiveData.value = ApiResponse.Loading
+        job = viewModelScope.launch {
+            while (true) {
+                apiGetRates("USD", "JPY,USD,CNY,EUR,AUD,KRW")
+                delay(UPDATE_TIME)
+            }
+        }
     }
-    val text: LiveData<String> = _text
+
+    fun cancelGetFlightsJob() {
+        job?.cancel()
+    }
+
+    private fun apiGetRates(baseCurrency: String, currencies: String) {
+        viewModelScope.launch {
+            runCatching {
+                currenciesRepository.getRates(baseCurrency, currencies)
+            }.onSuccess {
+                ratesLiveData.value = ApiResponse.Success(it)
+            }.onFailure {
+                it.printStackTrace()
+
+                ratesLiveData.value = ApiResponse.Error(it)
+                cancelGetFlightsJob()
+            }
+        }
+    }
 }
