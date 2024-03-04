@@ -13,7 +13,6 @@ import com.example.airportfly.ViewModelFactory
 import com.example.airportfly.adapter.CurrencyAdapter
 import com.example.airportfly.databinding.FragmentCurrencyBinding
 import com.example.airportfly.network.response.ApiResponse
-import com.example.airportfly.ui.flight.FlightFragment
 import com.example.airportfly.util.NetworkUtil
 import com.example.airportfly.util.getNowTimeString
 import com.example.airportfly.viewmodel.CurrencyViewModel
@@ -46,6 +45,7 @@ class CurrencyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setView()
+        setListener()
         setObserver()
     }
 
@@ -71,6 +71,12 @@ class CurrencyFragment : Fragment() {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = this@CurrencyFragment.adapter
+        }
+    }
+
+    private fun setListener() {
+        binding.btnRefresh.setOnClickListener {
+            viewModel.startGetRatesJob()
         }
     }
 
