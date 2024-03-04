@@ -3,23 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/searchFragment">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.airportfly.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/searchFragment"
+        android:name="com.example.airportfly.ui.flight.SearchFragment"
+        android:label="@string/title_flight">
+        <action
+            android:id="@+id/action_searchFragment_to_flightFragment"
+            app:destination="@id/flightFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.airportfly.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/flightFragment"
+        android:name="com.example.airportfly.ui.flight.FlightFragment"
+        android:label="@string/title_flight"
+        tools:layout="@layout/fragment_flight">
+
+        <argument
+            android:name="flyType"
+            app:argType="com.example.airportfly.util.FlyType" />
+
+        <argument
+            android:name="airPortId"
+            app:argType="com.example.airportfly.util.AirPortID" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.airportfly.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/currencyFragment"
+        android:name="com.example.airportfly.ui.currency.CurrencyFragment"
+        android:label="@string/title_currency"
+        tools:layout="@layout/fragment_currency" />
 </navigation>
